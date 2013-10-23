@@ -13,20 +13,20 @@ body {
   margin: 0 auto;
 }
       
-#todoList {
+#tareaListado {
   background: #fff;
   padding: 20px;
   border-radius: 0 0 5px 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
 }
       
-#todoList h1 {
+#tareaListado h1 {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
 }
       
-#todoList input[type="text"] {
+#tareaListado input[type="text"] {
   width: 466px;
   font-size: 24px;
   outline: none;
@@ -35,14 +35,14 @@ body {
   box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0 inset;
 }
 
-#theList {
+#listado {
   list-style-type: none;
   margin: 0;
   padding: 0;
   margin-top: 30px;
 }
 
-.eliminate {
+.eliminar {
   font-size: 20px;
   width: 20px;
   height: 20px;
@@ -54,26 +54,26 @@ body {
   float: right;
   text-decoration: none;
 }
-      
-.todoView:hover .eliminate {
-  display: inline-block;
-}
 
-.todoView {
+.tareaVista {
   font-size: 24px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+      
+.tareaVista:hover .eliminar {
+  display: inline-block;
+}
 
-.todoView input[type="checkbox"] {
+.tareaVista input[type="checkbox"] {
   margin-right: 10px;
 }
       
-.eliminate:hover {
+.eliminar:hover {
   background: #666666;
 }
       
-.done-true {
+.hecho-true {
   text-decoration: line-through;
   color: #555555;
 }
