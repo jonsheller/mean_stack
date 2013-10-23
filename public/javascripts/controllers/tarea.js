@@ -1,5 +1,7 @@
-function TareaController($scope) {
-	$scope.tareas = [];
+var tareaListado = angular.module('tareaListado', ['tareaFuente']);
+
+tareaListado.controller('TareaController', function TareaController($scope, Tarea) {
+	$scope.tareas = Tarea.query();
 	
 	$scope.agregarTarea = function(){
 		$scope.tareas.push({descripcion: $scope.tareaTexto, hecho: false});
@@ -21,4 +23,4 @@ function TareaController($scope) {
 		
 		return restante;
 	};
-}
+});
