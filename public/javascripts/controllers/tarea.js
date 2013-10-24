@@ -22,6 +22,10 @@ tareaListado.controller('TareaController', function TareaController($scope, Tare
 		tarea.$delete();
 	};
 	
+	$scope.hechoCambiado = function(tarea) {
+		tarea.$save();
+	};
+	
 	$scope.restantes = function() {
 		var restante = 0;
 		angular.forEach($scope.tareas, function(tarea) {

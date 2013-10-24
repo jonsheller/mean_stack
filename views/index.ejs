@@ -15,7 +15,7 @@
 				<ul id="listado">
 					<li ng-repeat="tarea in tareas">
 						<div class="tareaVista">
-							<input type="checkbox" ng-model="tarea.hecho">
+							<input type="checkbox" ng-model="tarea.hecho" ng-change="hechoCambiado(tarea);">
 							<label class="hecho-{{ tarea.hecho }}">{{ tarea.descripcion }}</label>
 							<a class="eliminar" href="#" ng-click="eliminar(tarea);">&#xD7;</a>
 						</div>
