@@ -9,6 +9,7 @@ var tarea = require('./routes/tarea');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
+var io = io = require('socket.io');
 var app = express();
 
 mongoose.connect("mongodb://localhost");
@@ -31,8 +32,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-tarea.agregarRutas(app, '/tarea');
+tarea.agregarRutas(app, '/tarea', io);
 
-http.createServer(app).listen(app.get('port'), function(){
+var servidor = http.createServer(app);
+io = io.listen(servidor);
+tarea.establecerSocket(io);
+
+servidor.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
