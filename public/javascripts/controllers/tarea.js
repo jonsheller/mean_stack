@@ -4,7 +4,13 @@ tareaListado.controller('TareaController', function TareaController($scope, Tare
 	$scope.tareas = Tarea.query();
 	
 	$scope.agregarTarea = function(){
-		$scope.tareas.push({descripcion: $scope.tareaTexto, hecho: false});
+		var nuevaTarea = new Tarea({descripcion: $scope.tareaTexto, hecho: false});
+		nuevaTarea.guardando = true;
+		nuevaTarea.$save(function(infoGuardada) {
+			delete nuevaTarea.guardando;
+			nuevaTarea._id = infoGuardada._id;
+		});
+		$scope.tareas.push(nuevaTarea);
 		$scope.tareaTexto = "";
 	};
 	
@@ -13,6 +19,7 @@ tareaListado.controller('TareaController', function TareaController($scope, Tare
 		if (indice != -1) {
 			$scope.tareas.splice(indice, 1);
 		}
+		tarea.$delete();
 	};
 	
 	$scope.restantes = function() {
