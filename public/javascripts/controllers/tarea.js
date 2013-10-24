@@ -1,15 +1,21 @@
 var tareaListado = angular.module('tareaListado', ['tareaFuente']);
 
 tareaListado.controller('TareaController', function TareaController($scope, Tarea) {
-	$scope.tareas = Tarea.query();
+	$scope.cargando = true;
+	$scope.guardando = 0;
+	
+	$scope.tareas = Tarea.query(function() {
+		$scope.cargando = false;
+	});
 	
 	$scope.agregarTarea = function(){
 		var nuevaTarea = new Tarea({descripcion: $scope.tareaTexto, hecho: false});
-		nuevaTarea.guardando = true;
+		$scope.guardando += 1;
 		nuevaTarea.$save(function(infoGuardada) {
-			delete nuevaTarea.guardando;
 			nuevaTarea._id = infoGuardada._id;
+			$scope.guardando -= 1;
 		});
+		
 		$scope.tareas.push(nuevaTarea);
 		$scope.tareaTexto = "";
 	};
@@ -19,11 +25,18 @@ tareaListado.controller('TareaController', function TareaController($scope, Tare
 		if (indice != -1) {
 			$scope.tareas.splice(indice, 1);
 		}
-		tarea.$delete();
+		
+		$scope.guardando += 1;
+		tarea.$delete(function() {
+			$scope.guardando -= 1;
+		});
 	};
 	
 	$scope.hechoCambiado = function(tarea) {
-		tarea.$save();
+		$scope.guardando += 1;
+		tarea.$save(function() {
+			$scope.guardando -= 1;
+		});
 	};
 	
 	$scope.restantes = function() {

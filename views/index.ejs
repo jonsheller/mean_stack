@@ -23,6 +23,9 @@
 				</ul>
 			</section>
 			<footer>
+				<div id="guardando" ng-show="guardando">
+					Guardando...
+				</div>
 				<span>
 					<ng-pluralize count="restantes()" when="{'0': 'No hay nada!', 'one': '1 ítem restante', 'other': '{} ítemes restantes'}"></ng-pluralize>
 				</span>

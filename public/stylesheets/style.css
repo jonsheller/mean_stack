@@ -67,3 +67,16 @@ body {
   text-decoration: line-through;
   color: #555555;
 }
+footer {
+  border-top: 1px solid #999999;
+}
+#guardando {
+  float: right;
+  border-radius: 10px;
+  padding: 2px 6px;
+  margin: 3px;
+  background: white;
+  -moz-box-shadow: inset 0 0 7px #000000;
+  -webkit-box-shadow: inset 0 0 7px #000000;
+  box-shadow: inset 0 0 7px #000000;
+}
