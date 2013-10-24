@@ -44,13 +44,8 @@ modificarTarea = function(req, res) {
 		if (err) {
 			res.json(err);
 		} else {
-			if (req.body.descripcion) {
-				tarea.descripcion = req.body.descripcion;
-			}
-			if (req.body.hecho) {
-				tarea.hecho = req.body.hecho;
-			}
-			
+			tarea.descripcion = req.body.descripcion;
+			tarea.hecho = req.body.hecho;
 			tarea.save(exito(res));
 		}
 	});
