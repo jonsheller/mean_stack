@@ -35,7 +35,6 @@ agregarTarea = function(req, res) {
 	tarea.descripcion = req.body.descripcion;
 	tarea.hecho = req.body.hecho;
 	tarea.save(exito(res, "nuevo"));
-	console.log(io);
 };
 
 eliminarTarea = function(req, res) {
